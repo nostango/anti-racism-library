@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AntiRacismLibrary</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    Welcome to the home page. 
+  
+  <p>
+  
+    
+    <form action="users/sign_out">
+        <button type="submit">Sign Out</button>
+    </form>
+    
+    </p>
+  </body>
+</html>
