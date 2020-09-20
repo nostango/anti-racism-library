@@ -1,14 +1,16 @@
 <h1>Add a resource to the library</h1>
 <div>
-    <%= form_with(model: @user, local: true) do |f| %> 
+    <%= form_with(model: @item, local: true) do |f| %> 
+    <%= render 'shared/error_messages' %>
+
         <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class: 'form-control' %>
         
         <%= f.label :author %>
-        <%= f.email_field :author %>
+        <%= f.text_field :author, class: 'form-control' %>
         
         <%= f.label :description %>
-        <%= f.password_field :description %>
+        <%= f.text_field :description, class: 'form-control' %>
         
         <%= f.submit "Add resource to the library", class: "btn btn-primary" %>
     <% end %>
