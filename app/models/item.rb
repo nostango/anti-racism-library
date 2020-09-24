@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-    validates :title, presence: true
-    validates :author, presence: true
-    validates :description, presence: true
+    validates :title, presence: true, length: { maximum: 50 }
+    validates :author, presence: true, length: { maximum: 50 }
+    validates :description, presence: true, length: { maximum: 1000 }
 end
