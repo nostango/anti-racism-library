@@ -1,6 +1,36 @@
-<div> Title: <%= @item.title %> </div>
-<div> Author: <%= @item.author %> </div>
-<div> Description: <%= @item.description %> </div>
-<%= link_to 'Edit', edit_item_path(@item) %>
-<%= link_to 'Delete', item_path(@item), method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+
+<h1 class="row"> Title: <%= @item.title %> </h1>
+<h2 class="row"> Author: <%= @item.author %> </h2>
+<h5 class="row"> Description: <%= @item.description %> </h5>
+<div class="container">
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Suggested resource 1</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-dark">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Suggested resource 2</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-dark">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+   <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Suggested resource 3</h5>
+        <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-dark">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
