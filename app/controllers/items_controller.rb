@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   
-  helper_method :current_user 
   
   def index
     @items = Item.all
