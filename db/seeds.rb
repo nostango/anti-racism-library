@@ -10,7 +10,7 @@ Item.create(author: "None", title: "Science, Feminism, and Black Liberation: An 
 
 # Seed an admin:
 ##### email: admin@grinnell.edu
-##### username: 
-##### password: password1234
-User.create(email: 'admin@grinnell.edu', encrypted_password: 'password', admin:true)
+##### username: admin
+##### password: password
+User.create(email: "admin@grinnell.edu", username: "admin", password: "password", admin:true)
 
