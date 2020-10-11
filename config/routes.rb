@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'non_library_pages/contact_us'
+  get 'non_library_pages/suggest_resource'
+  get 'non_library_pages/about_us'
   devise_for :users, controllers: {
     sessions: 'user/sessions'
     #registrations: 'user/registrations'
