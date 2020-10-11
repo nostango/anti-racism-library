@@ -1,5 +1,7 @@
 class NonLibraryPagesController < ApplicationController
   
+ #resources :users
+  
   def contact_us
   end
 
@@ -8,4 +10,5 @@ class NonLibraryPagesController < ApplicationController
 
   def about_us
   end
+  
 end
