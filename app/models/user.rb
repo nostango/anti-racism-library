@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   VALID_GRINNELL_EMAIL_REGEX = /\A[\w+\-.]+@grinnell\.edu/i
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :email, format: { with: VALID_GRINNELL_EMAIL_REGEX }
+  validates_acceptance_of :email, format: { with: VALID_GRINNELL_EMAIL_REGEX }, :message => "domain must be 'grinnell.edu'"
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 
          :validatable, authentication_keys: [:login]
