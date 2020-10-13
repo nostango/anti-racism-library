@@ -12,6 +12,11 @@
         <%= f.label :description %>
         <%= f.text_field :description, class: 'form-control' %>
         
+        <%= f.label :url, 'Optional URL' %>
+        <%= f.text_field :url, class: 'form-control' %>
+        
+        <%= f.label :category %>
+        <%= f.select :category, ["Book", "Podcast", "Video", "Journal", "Other"], {}, {class: 'form-control'}  %>
         
         <%= f.submit "Add resource to the library", class: "btn btn-dark" %>
     <% end %>
