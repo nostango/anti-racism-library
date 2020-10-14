@@ -21,6 +21,11 @@ Item.create(author: "Louise Archer Jennifier Dewitt Jonathan Osborne",
             description: "None", 
             url: "https://onlinelibrary.wiley.com/doi/full/10.1002/sce.21146", 
             category: "Journal")
+Item.create(author: "None", 
+            title: "Science, Feminism, and Black Liberation: An Interview with Sam Anderson", 
+            description: "The role of science in the struggle for Black liberation, and why it's critical for Black voices to shape fields that have excluded them.",
+            url: "https://magazine.scienceforthepeople.org/vol23-1/science-feminism-and-black-liberation-an-interview-with-sam-anderson/", 
+            category: "Journal")
 
 
 
