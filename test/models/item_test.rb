@@ -24,4 +24,10 @@ class ItemTest < ActiveSupport::TestCase
     @item.description = " "
     assert_not @item.valid?
   end
+  
+  test "item validations are true" do 
+  # check to make sure parameters that are too long aren't saved
+  end 
+  
+  
 end
