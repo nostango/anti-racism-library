@@ -27,8 +27,6 @@ Item.create(author: "None",
             url: "https://magazine.scienceforthepeople.org/vol23-1/science-feminism-and-black-liberation-an-interview-with-sam-anderson/", 
             category: "Journal")
 
-
-
 # Seed an admin:
 ##### email: admin@grinnell.edu
 ##### username: admin
