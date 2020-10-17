@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :validatable, authentication_keys: [:login]
   attr_writer :login
 
-  def login
+### user can login using username or email that they signed up with
+  def login 
     @login || self.username || self.email
   end
   
