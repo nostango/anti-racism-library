@@ -1,3 +1,6 @@
+# IMPORTANT: This file assumes that there are no library items in the database except for the seeded items. 
+#            If the seed file has been updated, (ie has more than 5 items), please update test for items show page.
+
 require 'test_helper'
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
@@ -8,6 +11,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
                      description: "Example Description", 
                      url: "example.com", 
                      category: "Journal")
+      # total number of items in database is: 6
     
     @invalid_item = Item.new(title: "", 
                              author: "", 
@@ -34,14 +38,34 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     get items_index_url
     assert_response :success
   end 
+
   
-  
-  # functionality tests
+#### FUNCTIONALITY TESTS ####
+
   test "invalid item isn't saved" do 
-    
+    item_count = Item.count
+    @invalid_item = Item.create(title: "", 
+                             author: "", 
+                             description: "", 
+                             url: "", 
+                             category: "Journal")
+    new_item_count = Item.count 
+    assert_equal(item_count, new_item_count, "invalid item isn't saved")
   end
   
   test "new items are saved to database" do 
+    item_count = Item.count
+    @item = Item.create(title: "Example Item", 
+                        author: "Example Author", 
+                        description: "Example Description", 
+                        url: "example.com", 
+                        category: "Journal")
+    new_item_count = Item.count 
+    net = new_item_count - item_count
+    assert_equal(net, 1, "valid item is saved")
+  end 
+  
+  test "new item parameters are saved" do 
     
   end 
   
