@@ -2,9 +2,9 @@ require 'test_helper'
 
 class UserIntegrationTest < ActionDispatch::IntegrationTest
     
-    def setup 
-        @user = User.create(username: "exaple", email: "example@grinnell.edu", password: "example_password" )
-    end 
+    # def setup 
+    #     @user = User.create(username: "exaple", email: "example@grinnell.edu", password: "example_password" )
+    # end 
     
     test "user can login and logout" do 
         get user_session_path
@@ -37,10 +37,22 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
     test "signup adds user to database, they can now log in" do 
         first_count = User.count
         get new_user_registration_path
-        post user_registration_path, params: {email: "test@grinnell.edu", 
-                                                         username: "test",
-                                                         password: "testpassword", 
-                                                         password_confirmation: "testpassword" } 
+        post user_registration_path, params: { user: {email: "test@grinnell.edu", 
+                                                      username: "test",
+                                                      password: "testpassword", 
+                                                      password_confirmation: "testpassword" } }
+        
+        
+        #assert_response :redirect
+        #follow_redirect!
+        #assert_response :success
+        # check to see if redirected to home
+        assert_select "title", "AntiRacismLibrary"
+        
+        User.create(email: "test@grinnell.edu", 
+                    username: "test",
+                    password: "testpassword", 
+                    password_confirmation: "testpassword")
         assert_equal(first_count + 1, User.count, "user successfully added to database")
         get user_session_path 
         post user_session_path, params: { session: {login: "test@grinnell.edu", password: "testpassword" } }

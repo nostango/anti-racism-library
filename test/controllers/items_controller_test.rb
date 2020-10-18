@@ -37,6 +37,18 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   
 #### FUNCTIONALITY TESTS ####
 
+  test "destroyed item no longer exists" do 
+    item_old_count =  Item.count
+    @item = Item.create(title: "Example Item", 
+                        author: "Example Author", 
+                        description: "Example Description", 
+                        url: "example.com", 
+                        category: "Journal")
+    assert_equal(item_old_count + 1, Item.count, "added item successfully")
+    @item.destroy
+    assert_equal(item_old_count, Item.count, "deleted item successfully")
+  end 
+
   test "invalid item isn't saved" do 
     item_count = Item.count
     @invalid_item = Item.create(title: "", 
@@ -58,17 +70,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     new_item_count = Item.count 
     net = new_item_count - item_count
     assert_equal(net, 1, "valid item is saved")
-  end 
-  
-  test "destroyed item no longer exists" do 
-    @item = Item.create(title: "Example Item", 
-                        author: "Example Author", 
-                        description: "Example Description", 
-                        url: "example.com", 
-                        category: "Journal")
-    assert_equal(Item.count, 1, "added item successfully")
     @item.destroy
-    assert_equal(Item.count, 0, "deleted item successfully")
   end 
   
   test "update item does not add a new item" do

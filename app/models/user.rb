@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  VALID_GRINNELL_EMAIL_REGEX = /\A[\w+\-.]+@grinnell\.edu/i
-  validates_acceptance_of :email, format: { with: VALID_GRINNELL_EMAIL_REGEX }, :message => "domain must be 'grinnell.edu'"
+  # VALID_GRINNELL_EMAIL_REGEX = /\A[\w+\-.]+@grinnell\.edu/i
+  # validates_acceptance_of :email, format: { with: VALID_GRINNELL_EMAIL_REGEX }, :message => "domain must be 'grinnell.edu'"
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 
          :validatable, authentication_keys: [:login]
