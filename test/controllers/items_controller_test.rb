@@ -6,18 +6,18 @@ require 'test_helper'
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   
   def setup
-    @item = Item.new(title: "Example Item", 
-                     author: "Example Author", 
-                     description: "Example Description", 
-                     url: "example.com", 
-                     category: "Journal")
-      # total number of items in database is: 6
+    # @item = Item.create(title: "Example Item", 
+    #                 author: "Example Author", 
+    #                 description: "Example Description", 
+    #                 url: "example.com", 
+    #                 category: "Journal")
+    #   # total number of items in database is: 6
     
-    @invalid_item = Item.new(title: "", 
-                             author: "", 
-                             description: "", 
-                             url: "", 
-                             category: "Journal")
+    # @invalid_item = Item.create(title: "", 
+    #                         author: "", 
+    #                         description: "", 
+    #                         url: "", 
+    #                         category: "Journal")
   end
   
   
@@ -29,13 +29,8 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   
-  test "should get update" do 
-    get items_edit_url
-    assert_response :success
-  end 
-  
   test "should get index (all resources)" do 
-    get items_index_url
+    get items_path
     assert_response :success
   end 
 
@@ -65,15 +60,24 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_equal(net, 1, "valid item is saved")
   end 
   
-  test "new item parameters are saved" do 
-    
-  end 
-  
   test "destroyed item no longer exists" do 
-    
+    @item = Item.create(title: "Example Item", 
+                        author: "Example Author", 
+                        description: "Example Description", 
+                        url: "example.com", 
+                        category: "Journal")
+    assert_equal(Item.count, 1, "added item successfully")
+    @item.destroy
+    assert_equal(Item.count, 0, "deleted item successfully")
   end 
   
   test "update item does not add a new item" do
+    # @item = Item.create(title: "Example Item", 
+    #                     author: "Example Author", 
+    #                     description: "Example Description", 
+    #                     url: "example.com", 
+    #                     category: "Journal")
+    # @item.update()
   
   end 
   
