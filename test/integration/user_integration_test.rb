@@ -37,10 +37,10 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
     test "signup adds user to database, they can now log in" do 
         first_count = User.count
         get new_user_registration_path
-        post new_user_registration_path, params: { session: {username: "test", 
-                                                             email: "test@grinnell.edu", 
-                                                             password: "testpassword", 
-                                                             password_confirmation: "testpassword" } }
+        post user_registration_path, params: {email: "test@grinnell.edu", 
+                                                         username: "test",
+                                                         password: "testpassword", 
+                                                         password_confirmation: "testpassword" } 
         assert_equal(first_count + 1, User.count, "user successfully added to database")
         get user_session_path 
         post user_session_path, params: { session: {login: "test@grinnell.edu", password: "testpassword" } }
