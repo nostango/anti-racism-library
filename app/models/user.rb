@@ -1,15 +1,15 @@
 class User < ApplicationRecord
-  VALID_GRINNELL_EMAIL_REGEX = /\A[\w+\-.]+@grinnell\.edu/i
-  validates_acceptance_of :email, format: { with: VALID_GRINNELL_EMAIL_REGEX }, :message => "domain must be 'grinnell.edu'"
   devise :confirmable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, 
+         :recoverable, :rememberable, :trackable,
          :validatable, authentication_keys: [:login]
   attr_writer :login
-
+  VALID_GRINNELL_EMAIL_REGEX = /\A[\w+\-.]+@grinnell\.edu/i
+  validates_format_of :email, :with => VALID_GRINNELL_EMAIL_REGEX , :message => "domain must be 'grinnell.edu'"
+  
   def login
     @login || self.username || self.email
   end
-  
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
