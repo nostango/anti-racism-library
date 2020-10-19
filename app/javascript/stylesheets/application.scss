@@ -2,16 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
 $dark: black;
-$grinnell-red: rgb(218, 41, 28);
+$light: white;
+$background-dark: rgb(218, 41, 28);
 $background-light: rgb(255,236,236);
 
 .navbar {
         margin-bottom: 0;
-        background: black;
-}
+        background: $dark ;
+} 
 body {
        background: $background-light;
-        color: black;
+        color: $dark;
         font-family: 'Merriweather', sans-serif;
 }
 h1,
@@ -25,23 +26,23 @@ p {
 
 .jumbotron {
         background: #0048CD;
-        color: white;
+        color: $light;
         text-align: center;
         p {
-                color: white;
+                color: $light;
                 font-size: 26px;
         }
 }
 .link {
-        color: white;
+        color: $light;
 }
 .btn-primary {
-        color: black;
-        border-color: white;
+        color: $dark;
+        border-color: $light;
         margin-bottom: 5px;
 }
 .btn-sm {
-        background-color: white;
+        background-color: $light;
         display: inline-block;
 }
 img,
