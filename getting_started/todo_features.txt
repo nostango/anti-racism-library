@@ -4,3 +4,4 @@ Some major next steps that we have identified at the end of term 1:
 * connect "resource suggestions" page to database or send it to admin for the approval
 * configure Mailer so that email confimation and password confirmation works
 * populate database that Nicole provided us with information about resources (category, description, etc)
+* check usability depending on screen size (mobile phone, tablet, laptop, ect) - nav bar/search/footer all need work
