@@ -74,13 +74,15 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end 
   
   test "update item does not add a new item" do
-    # @item = Item.create(title: "Example Item", 
-    #                     author: "Example Author", 
-    #                     description: "Example Description", 
-    #                     url: "example.com", 
-    #                     category: "Journal")
-    # @item.update()
-  
+    old_count = Item.count
+    @item = Item.create(title: "Example Item", 
+                        author: "Example Author", 
+                        description: "Example Description", 
+                        url: "example.com", 
+                        category: "Journal")
+    @item.update(title: "Updated Example Item")
+    new_count = Item.count
+    assert_equal(old_count, new_count)
   end 
   
   test "update item has updated parameters" do 
