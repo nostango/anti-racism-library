@@ -1,23 +1,20 @@
-# IMPORTANT: This file assumes that there are no library items in the database except for the seeded items. 
-#            If the seed file has been updated, (ie has more than 5 items), please update test for items show page.
-
 require 'test_helper'
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   
   def setup
-    # @item = Item.create(title: "Example Item", 
-    #                 author: "Example Author", 
-    #                 description: "Example Description", 
-    #                 url: "example.com", 
-    #                 category: "Journal")
-    #   # total number of items in database is: 6
+    @item = Item.create(title: "Example Item", 
+                    author: "Example Author", 
+                    description: "Example Description", 
+                    url: "example.com", 
+                    category: "Journal")
+      # total number of items in database is: 6
     
-    # @invalid_item = Item.create(title: "", 
-    #                         author: "", 
-    #                         description: "", 
-    #                         url: "", 
-    #                         category: "Journal")
+    @invalid_item = Item.create(title: "", 
+                            author: "", 
+                            description: "", 
+                            url: "", 
+                            category: "Journal")
   end
   
   
@@ -39,7 +36,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "destroyed item no longer exists" do 
     item_old_count =  Item.count
-    @item = Item.create(title: "Example Item", 
+    @item = Item.create(title: "New Example Item", 
                         author: "Example Author", 
                         description: "Example Description", 
                         url: "example.com", 
@@ -62,7 +59,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   
   test "new items are saved to database" do 
     item_count = Item.count
-    @item = Item.create(title: "Example Item", 
+    @item = Item.create(title: "New Example Item", 
                         author: "Example Author", 
                         description: "Example Description", 
                         url: "example.com", 
@@ -75,22 +72,38 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   
   test "update item does not add a new item" do
     old_count = Item.count
-    @item = Item.create(title: "Example Item", 
-                        author: "Example Author", 
-                        description: "Example Description", 
-                        url: "example.com", 
-                        category: "Journal")
-    @item.update(title: "Updated Example Item")
+    @item.update(title: "Updated Example Item", 
+                 author: "Updated Example Author", 
+                 description: "Updated Example Description", 
+                 url: "updatedexample.com", 
+                 category: "Book")
     new_count = Item.count
     assert_equal(old_count, new_count)
   end 
   
   test "update item has updated parameters" do 
+   @item.update(title: "Updated New Example Item", 
+                author: "Updated New Example Author", 
+                description: "Updated New Example Description", 
+                url: "updatednewexample.com", 
+                category: "Book") 
     
+   result = @item.title <=> "Updated New Example Item"
+   assert_equal(result, 0, "title not updated properly")
+   result = @item.author <=> "Updated New Example Author"
+   assert_equal(result, 0, "author not updated properly")
+   result = @item.description <=> "Updated New Example Description"
+   assert_equal(result, 0, "description not updated properly")
+   result = @item.url <=> "updatednewexample.com"
+   assert_equal(result, 0, "url not updated properly")
+   result = @item.category <=> "Book"
+   assert_equal(result, 0, "category not updated properly")
   end 
   
   test "cannot get item that doesn't exist" do 
-    
+    item_count = Item.count
+    result = Item.find_by id: item_count + 1
+    assert_nil(result, "found an item that doesn't exist")
   end 
 
 end
